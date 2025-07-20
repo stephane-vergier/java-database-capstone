@@ -51,3 +51,91 @@
 * Use the same base green background (`#015c5d`) as the default button.
 * On hover, darken the background to deep teal (`#003e3e`) for visual feedback.
  */
+
+ * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Roboto;
+}
+
+h2, button {
+    font-size: large;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+button {
+    text-align: center;
+    background-color: ivory;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+button:hover {
+    background-color: #DDD;
+}
+
+main.main-content {
+    background-image: url(/assets/images/logo/logo.png);
+    background-position: top left;
+    background-attachment: fixed;
+    background-size: 32px 32px;
+}
+
+main.main-content div.container {
+    align-items: center;
+}
+
+div.modal {
+    position: absolute;
+    margin: auto;
+}
+
+#modalClose {
+    background-color: lightblue;
+    color: white;
+}
+#modalClose:hover {
+    background-color: darkblue;
+    font-weight: bold;
+}
+
+.footer {
+    /* with layout for flexbox-based sectioning, 
+        responsive for mobile view. */
+
+}
+
+.header {
+    /* styles logo and nav items 
+        for a clean and responsive layout.
+    */
+}
+
+button:hover, input:hover {
+
+}
+button:focus, input:focus {
+
+}
+
+.dashboard-btn {
+
+}
+
+.input-field {
+
+}
+
+.select-dropdown {
+
+} 
+
+.checkbox-group {
+
+}

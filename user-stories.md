@@ -4,7 +4,7 @@
 
 ## Admin Login
 **Title:**
-_As a Administrator, I want to log into the portal with your username and password to manage the platform securely._
+_As a Administrator, I want to log into the portal with my username and password to manage the platform securely._
 
 **Acceptance Criteria:**
 1. Administrator can enter email
@@ -93,7 +93,7 @@ _As a Patient, I want to view a list of doctors without logging, so that i can e
 
 ## Sign-in
 **Title:**
-_As a Patient, I want to Sign up using your email and password , so that i can book appointments._
+_As a Patient, I want to Sign up using my email and password , so that i can book appointments._
 
 **Acceptance Criteria:**
 1. User can enter email

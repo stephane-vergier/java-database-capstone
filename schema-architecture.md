@@ -10,5 +10,5 @@ This Spring Boot application uses both MVC and REST controllers. Thymeleaf templ
 4. The service layer communicates with repository layer to access data
 5. The repository layer interfaces directly with the underlying database engine.
 6. The data retrieved from the database, and returned from repositories, is mapped into Java model classes
-7. The controller receive the data from the service layer, eventually converts it to DTOs, and  transfers it either to Thymeleaf engine to return a dynamic HTML page, or directly to client in JSON format.
+7. The controller receive the data from the service layer, eventually converts it to DTOs, and in MVC flow, transfers it either to Thymeleaf engine to return a dynamic HTML page, and in REST flow it transfers directly to client in JSON format.
 

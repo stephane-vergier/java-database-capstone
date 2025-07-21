@@ -126,8 +126,8 @@ public class Doctor {
 		return password;
 	}
 
-	public void setPassword(String passwword) {
-		this.password = passwword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getPhone() {

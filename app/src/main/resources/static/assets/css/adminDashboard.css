@@ -6,51 +6,51 @@ Global Reset (`*`)
 * Purpose: Ensure consistent layout across all browsers.
 * Properties:
 
-  * `margin: 0` — removes default outer spacing from all elements.
-  * `padding: 0` — removes default inner spacing.
-  * `box-sizing: border-box` — ensures padding and borders are included within the total width/height of elements.
+    margin: 0` — removes default outer spacing from all elements.
+    padding: 0` — removes default inner spacing.
+    box-sizing: border-box` — ensures padding and borders are included within the total width/height of elements.
 
 Base HTML & Body (`html, body`)
 
 * Purpose: Establish a full-height layout and apply a standard font across the page.
 * Properties:
 
-  * `height: 100%` — allows containers to stretch to the full viewport height.
-  * `font-family: Arial, sans-serif` — applies a clean, readable sans-serif font.
+    height: 100%` — allows containers to stretch to the full viewport height.
+    font-family: Arial, sans-serif` — applies a clean, readable sans-serif font.
 
 Main Layout Wrapper (`.wrapper`)
 
 * Purpose: Create a flexible, vertical layout that fills the entire screen.
 * Properties:
 
-  * `display: flex` — enables flexbox for layout control.
-  * `flex-direction: column` — stacks children vertically.
-  * `min-height: 100vh` — ensures the wrapper always covers full screen height.
+    display: flex` — enables flexbox for layout control.
+    flex-direction: column` — stacks children vertically.
+    min-height: 100vh` — ensures the wrapper always covers full screen height.
 
 Section Heading (`h2`)
 
 * Purpose: Style the headings prominently for section separation.
 * Properties:
 
-  * `font-size: 32px` — makes the heading large and noticeable.
-  * `font-weight: bold` — emphasizes text.
-  * `margin-bottom: 50px` — creates space below the heading.
-  * `color: #003e3e` — uses a strong teal for visual anchoring.
+    font-size: 32px` — makes the heading large and noticeable.
+    font-weight: bold` — emphasizes text.
+    margin-bottom: 50px` — creates space below the heading.
+    color: #003e3e` — uses a strong teal for visual anchoring.
 
 Main Content Section (`.main-content`)
 
 * Purpose: Layout the main content with padding and a background image.
 * Properties:
 
-  * `flex-grow: 1` — lets the content fill the available vertical space.
-  * `padding: 40px` — adds internal spacing around content.
-  * `display: flex` and `flex-direction: column` — organizes content in a vertical stack.
-  * `text-align: center` — centers the text.
-  * `background-image: url("index.png")` — sets a full-screen dashboard background.
-  * `background-size: cover` — ensures the image covers the whole section.
-  * `background-position: center` — centers the image.
-  * `background-repeat: no-repeat` — avoids tiling the image.
-  * `background-attachment: fixed` — fixes the image while scrolling.
+    flex-grow: 1` — lets the content fill the available vertical space.
+    padding: 40px` — adds internal spacing around content.
+    display: flex` and `flex-direction: column` — organizes content in a vertical stack.
+    text-align: center` — centers the text.
+    background-image: url("index.png")` — sets a full-screen dashboard background.
+    background-size: cover` — ensures the image covers the whole section.
+    background-position: center` — centers the image.
+    background-repeat: no-repeat` — avoids tiling the image.
+    background-attachment: fixed` — fixes the image while scrolling.
 
 Primary Button (`button`)
 
@@ -58,15 +58,15 @@ Primary Button (`button`)
 
 * Properties:
 
-  * `background-color: #A62B1F` — sets a bold red color.
-  * `color: white` — makes text stand out.
-  * `border: none` — removes any outline/border.
-  * `border-radius: 12px` — creates rounded corners.
-  * `padding: 10px 20px` — gives space inside the button.
-  * `margin-top: 20px` — adds spacing above the button.
-  * `width: 200px` — ensures consistent button width.
-  * `cursor: pointer` — shows a hand icon on hover.
-  * `font-size: 16px` — makes the text readable.
+    background-color: #A62B1F` — sets a bold red color.
+    color: white` — makes text stand out.
+    border: none` — removes any outline/border.
+    border-radius: 12px` — creates rounded corners.
+    padding: 10px 20px` — gives space inside the button.
+    margin-top: 20px` — adds spacing above the button.
+    width: 200px` — ensures consistent button width.
+    cursor: pointer` — shows a hand icon on hover.
+    font-size: 16px` — makes the text readable.
 
 * On Hover:
 
@@ -78,13 +78,13 @@ Admin Button (`.adminBtn`)
 
 * Properties:
 
-  * `background-color: #f4f4f4` — uses a light grey background.
-  * `color: #333` — uses dark text for contrast.
-  * `font-weight: bold` — emphasizes text.
-  * `width: 110px` — smaller, compact width.
-  * `padding: 10px 0` — vertical padding only.
-  * `border: none` — clean look.
-  * `cursor: pointer` — indicates it's clickable.
+    background-color: #f4f4f4` — uses a light grey background.
+    color: #333` — uses dark text for contrast.
+    font-weight: bold` — emphasizes text.
+    width: 110px` — smaller, compact width.
+    padding: 10px 0` — vertical padding only.
+    border: none` — clean look.
+    cursor: pointer` — indicates it's clickable.
 
 * On Hover**:
 
@@ -92,3 +92,98 @@ Admin Button (`.adminBtn`)
 
 
 */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; font-family: Arial, sans-serif; }
+
+.wrapper {
+  display: flex; /* enables flexbox for layout control. */
+  flex-direction: column; /* stacks children vertically. */
+  min-height: 100vh; /* ensures the wrapper always covers full screen height. */
+}
+
+h2 {
+  font-size: 32px; /* makes the heading large and noticeable. */
+  font-weight: bold; /* emphasizes text. */
+  margin-bottom: 50px; /* creates space below the heading. */
+  color: #003e3e; /* uses a strong teal for visual anchoring. */
+}
+
+.main-content {
+  flex-grow: 1; /* lets the content fill the available vertical space. */
+  padding: 40px; /* adds internal spacing around content. */
+  display: flex; 
+  flex-direction: column; /* organizes content in a vertical stack. */
+  text-align: center; /* centers the text. */
+  background-image: url("index.png"); /* sets a full-screen dashboard background. */
+  background-size: cover; /* ensures the image covers the whole section. */
+  background-position: center; /* centers the image. */
+  background-repeat: no-repeat; /* avoids tiling the image. */
+  background-attachment: fixed; /* fixes the image while scrolling. */
+	
+}
+
+.main-content ul.search-bar {
+	display: flex;
+	flex-direction: row;
+}
+
+.main-content ul.search-bar li {
+	flex : 1;
+}
+
+button {
+	background-color: #A62B1F; /* sets a bold red color.*/
+    color: white; /*makes text stand out. */
+    border: none; /* removes any outline/border. */
+    border-radius: 12px; /* creates rounded corners. */
+    padding: 10px 20px; /* gives space inside the button. */
+    margin-top: 20px; /* adds spacing above the button. */
+    width: 200px; /* ensures consistent button width. */
+    cursor: pointer; /* shows a hand icon on hover. */
+    font-size: 16px; /* makes the text readable. */
+}
+
+button:hover {
+	background-color: #A62B1F; /* sets a bold red color.*/
+}
+
+.adminBtn {
+    background-color: #A62B1F; /* sets a bold red color. */
+    color: white; /* makes text stand out. */
+    border: none; /* removes any outline/border. */
+    border-radius: 12px; /* creates rounded corners. */
+    padding: 10px 20px; /* gives space inside the button. */
+    margin-top: 20px; /* adds spacing above the button. */
+    width: 200px; /* ensures consistent button width. */
+    cursor: pointer; /* shows a hand icon on hover. */
+    font-size: 16px; /* makes the text readable. */
+}
+
+adminBtn:hover {
+	color: #A62B1F;
+}
+
+.modal {
+	display: hidden;
+	align-items: center;
+}
+
+.modal input {
+	padding: 1rem;
+}
+
+.modal input:focus {
+	background-color: #ccc;
+}
+/* ?? */
+.content-area {
+	
+}
+
+.doctor-card {
+	display: flex;
+	flex-wrap: wrap; 
+}
+

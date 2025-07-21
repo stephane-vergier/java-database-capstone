@@ -58,7 +58,7 @@ public class Patient {
 	@NotNull
 	@Size(min = 6)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY )
-	private String passwword;
+	private String password;
 
 // 5. 'phone' field:
 //    - Type: private String
@@ -108,12 +108,12 @@ public class Patient {
 		this.email = email;
 	}
 
-	public String getPasswword() {
-		return passwword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasswword(String passwword) {
-		this.passwword = passwword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getPhone() {

@@ -99,3 +99,61 @@ This file defines the Doctor Dashboard interface, allowing doctors to view and m
 
     * Properly close the `<body>` and `<html>` tags to complete the document.
  -->
+!DOCTYPE html>
+ 
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8"></meta>
+        <title>Doctor Dashboard</title>
+		<link rel="stylesheet" th:href="@{/assets/css/adminDashboard.css}">
+		<link rel="stylesheet" th:href="@{/assets/css/doctorDashboard.css}">
+		<link rel="stylesheet" th:href="@{/assets/css/style.css}">
+		<script th:src="@{/js/render.js}" defer></script>
+		<script th:src="@{/js/util.js}" defer></script>
+		<script th:src="@{/js/components/header.js}" defer></script>
+		<script th:src="@{/js/components/footer.js}" defer></script>
+		<script th:src="@{/js/components/patientRows.js}" defer></script>
+		<script th:src="@{/js/components/patientServices.js}" defer></script>
+		<script th:src="@{/js/components/doctorDashbord.js}" defer></script>
+    </head>
+    <body  onload="renderContent()">
+        <div class="container">
+	        <div class="wrapper">
+		        <div id="header"></div>
+		        <main class="main-content">
+			        <ul class="search-bar">
+				        <li>
+					        <input type="text" id="searchBar" placeholder="search by patient name" />
+					    </li>
+					    <li>
+					        <button id="today-button">Today</button>
+					    </li>
+					    <li>
+					        <input type="date" id="search-date-input" placeholder="search by date"></input>
+					    </li>
+			        </ul>
+			        <table id="patientTable">
+			        	<thead>
+			        		<tr>
+			        			<th>Patient ID</th>
+			        			<th>Name</th>
+			        			<th>Phone</th>
+			        			<th>Email</th>
+			        			<th>Prescription</th>
+			        		</tr>
+			        	</thead>
+			        	<tbody></tbody>
+			        </table>
+		        </main>
+		        <div id="footer"></div>
+            </div>
+        </div>
+		<div id="modal" class="modal">
+		  <span id="closeModal" class="close">&times;</span>
+		  <div id="modal-body"></div>
+		</div>
+		<script type="module" src="../js/services/adminDashboard.js" defer></script>
+		<script type="module" src="../js/components/doctorCard.js" defer></script>
+    </body>
+</html>

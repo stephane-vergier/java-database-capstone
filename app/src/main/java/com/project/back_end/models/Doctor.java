@@ -52,7 +52,7 @@ public class Doctor {
 //      - The @Size(min = 3, max = 50) annotation ensures that the specialty name is between 3 and 50 characters long.
 	@NotNull
 	@Size(min = 3, max = 50)
-	private String speciality;
+	private String specialty;
 
 // 4. 'email' field:
 //    - Type: private String
@@ -72,9 +72,9 @@ public class Doctor {
 //      - The @Size(min = 6) annotation ensures that the password must be at least 6 characters long.
 //      - The @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) annotation ensures that the password is not serialized in the response (hidden from the frontend).
 	@NotNull
-	@Size(min = 3, max = 50)
+	@Size(min = 6)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY )
-	private String passwword;
+	private String password;
 
 // 6. 'phone' field:
 //    - Type: private String
@@ -122,12 +122,12 @@ public class Doctor {
 		this.email = email;
 	}
 
-	public String getPasswword() {
-		return passwword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasswword(String passwword) {
-		this.passwword = passwword;
+	public void setPassword(String passwword) {
+		this.password = passwword;
 	}
 
 	public String getPhone() {
@@ -146,12 +146,12 @@ public class Doctor {
 		this.availableTimes = availableTimes;
 	}
 
-	public String getSpeciality() {
-		return speciality;
+	public String getSpecialty() {
+		return specialty;
 	}
 
-	public void setSpeciality(String speciality) {
-		this.speciality = speciality;
+	public void setSpecialty(String specialty) {
+		this.specialty = specialty;
 	}
 	
 }

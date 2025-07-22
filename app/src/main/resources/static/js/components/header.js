@@ -1,3 +1,5 @@
+import { openModal } from "../components/modals";
+
 /*
   Step-by-Step Explanation of Header Section Rendering
 
@@ -7,6 +9,7 @@
 
      * The `renderHeader` function is responsible for rendering the entire header based on the user's session, role, and whether they are logged in.
 */
+
 /*
   2. Select the Header Div
 
@@ -173,6 +176,7 @@ function renderHeader() {
 	const headerDiv = document.getElementById("header");
 	if (window.location.pathname.endsWith("/")) {
 	  localStorage.removeItem("userRole");
+	  localStorage.removeItem("token");
 	  headerDiv.innerHTML = `
 	    <header class="header">
 	      <div class="logo-section">
@@ -223,10 +227,20 @@ function renderHeader() {
 */
 
 /*
-  13. **attachHeaderButtonListeners**: Adds event listeners to login buttons for "Doctor" and "Admin" roles. If clicked, it opens the respective login modal.
+  13. **attachHeaderButtonListeners**: Adds event listeners to login buttons for 
+  			"Doctor" and "Admin" roles. 
+  			If clicked, it opens the respective login modal.
 */
 function attachHeaderButtonListeners() { 
-	
+	const adminLogInBtn = document.getElementById("admin");
+	adminLogInBtn.addEventListener("click", e => {
+		openModal("adminLogin");
+	});
+	const doctorLogInBtn = document.getElementById("admin");
+	doctorLogInBtn.addEventListener("click", e => {
+		openModal("doctorLogin");
+	});
+
 }
 
 /*
@@ -234,6 +248,7 @@ function attachHeaderButtonListeners() {
 */
 function logout() { 
 	localStorage.removeItem("userRole");
+	localStorage.removeItem("token");
 	window.location.href = "/";
 }
 
@@ -243,6 +258,7 @@ function logout() {
 */
 function logoutPatient() { 
 	localStorage.removeItem("userRole");
+	localStorage.removeItem("token");
 	window.location.href = "/patient-dashboard";
 }
 

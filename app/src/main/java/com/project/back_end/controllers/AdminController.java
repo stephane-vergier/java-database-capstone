@@ -1,6 +1,21 @@
 
 package com.project.back_end.controllers;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.back_end.models.Admin;
+import com.project.back_end.services.Service;
+
+@RestController
+@RequestMapping("${api.path}" + "admin")
 public class AdminController {
 
 // 1. Set Up the Controller Class:
@@ -8,6 +23,8 @@ public class AdminController {
 //    - Use `@RequestMapping("${api.path}admin")` to define a base path for all endpoints in this controller.
 //    - This allows the use of an external property (`api.path`) for flexible configuration of endpoint paths.
 
+	@Autowired
+	Service service;
 
 // 2. Autowire Service Dependency:
 //    - Use constructor injection to autowire the `Service` class.
@@ -20,7 +37,10 @@ public class AdminController {
 //    - Accepts an `Admin` object in the request body, which contains login credentials.
 //    - Delegates authentication logic to the `validateAdmin` method in the service layer.
 //    - Returns a `ResponseEntity` with a `Map` containing login status or messages.
-
+	@PostMapping
+	public ResponseEntity<Map<String, String>> adminLogin(@RequestBody Admin admin) {
+		return service.validateAdmin(admin.getUsername(), admin.getPassword());
+	}
 
 
 }

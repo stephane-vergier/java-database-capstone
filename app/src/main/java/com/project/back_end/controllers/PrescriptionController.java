@@ -1,5 +1,15 @@
 package com.project.back_end.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.back_end.services.AppointmentService;
+import com.project.back_end.services.PrescriptionService;
+import com.project.back_end.services.Service;
+
+@RestController
+@RequestMapping("/prescription")
 public class PrescriptionController {
     
 // 1. Set Up the Controller Class:
@@ -12,7 +22,12 @@ public class PrescriptionController {
 //    - Inject `PrescriptionService` to handle logic related to saving and fetching prescriptions.
 //    - Inject the shared `Service` class for token validation and role-based access control.
 //    - Inject `AppointmentService` to update appointment status after a prescription is issued.
-
+	@Autowired
+	PrescriptionService prescriptionService;
+	@Autowired
+	Service service;
+	@Autowired
+	AppointmentService appointmentService;
 
 // 3. Define the `savePrescription` Method:
 //    - Handles HTTP POST requests to save a new prescription for a given appointment.

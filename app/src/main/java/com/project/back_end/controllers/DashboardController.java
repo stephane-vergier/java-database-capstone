@@ -17,7 +17,7 @@ public class DashboardController {
 	
 	@GetMapping("/adminDashboard/{token}")
 	public String adminDashboard(@PathVariable String token) {
-		if( service.validateToken(token, "admin") == HttpStatus.OK ) {
+		if( service.validateToken(token, "admin") ) {
 			return "admin/adminDashboard";
 		}
 		return "redirect:/login";
@@ -25,7 +25,7 @@ public class DashboardController {
 
 	@GetMapping("/doctorDashboard/{token}")
 	public String doctorDashboard(@PathVariable String token) {
-		if( service.validateToken(token, "doctor") == HttpStatus.OK ) {
+		if( service.validateToken(token, "doctor") ) {
 			return "admin/doctorDashboard";
 		}
 		return "redirect:/login";

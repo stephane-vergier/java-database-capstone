@@ -20,8 +20,7 @@ public class Prescription {
 //      - The @Id annotation marks it as the primary key in the MongoDB collection.
 //      - The id is of type String, which is commonly used for MongoDB's ObjectId as it stores IDs as strings in the database.
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 
 // 2. 'patientName' field:
 //    - Type: private String
@@ -74,11 +73,11 @@ public class Prescription {
 //	    - Standard getter and setter methods are provided for all fields: id, patientName, medication, dosage, doctorNotes, and appointmentId.
 //	    - These methods allow access and modification of the fields of the Prescription class.
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

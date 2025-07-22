@@ -27,4 +27,22 @@ public class Login {
 //    - The 'setPassword(String password)' method sets the password value.
 
 
+    private String identifier; // The unique identifier of the user attempting to log in (email for Doctor/Patient, username for Admin)
+    private String password; // The password provided by the user
+    
+	public String getIdentifier() {
+		return identifier;
+	}
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+    
+    
+
 }

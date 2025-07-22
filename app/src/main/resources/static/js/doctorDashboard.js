@@ -1,3 +1,56 @@
+import { getAllAppointments } from "../services/appointmentRecordService.js";
+import { createPatientRow } from "../components/patientRows.js";
+
+const patientTableBody = document.getElementById("patientTableBody");
+const datePicker = document.getElementById("datePicker");
+let selectedDate = new Date();
+const token = localStorage.getItem("tpken");
+let patientName = null;
+
+document.getElementById("searchBar").addEventListener("change", e=>{
+	if( e.target.value.trim() == "" ) {
+		patientName = null;
+	} else {
+		patientName = e.target.value.trim();
+	}
+	loadAppointments();
+});
+
+document.getElementById("todayBtn").addEventListener("change", e=>{
+	selectedDate = new Date();
+	datePicker.value = selectedDate;
+});
+
+async function loadAppointments() {
+	try {
+		const apps = await getAllAppointments(selectedDate, patientName, token);
+		patientTableBody.innerHTML = "";
+		if( apps.length == 0 ) {
+			patientTableBody.appendChild( createRow( "No Appointments found for today" ) );
+		} else {
+			for(const app of apps ) {
+				const row = gcreatePatientRow(app);
+				patientTableBody.appendChild( row );
+			}
+		}
+	} catch(e) {
+		console.error(e);
+		
+	}
+}
+
+function createRow(msg) {
+	const tr = document.createElement("tr");
+	const td = document.createElement("td");
+	td.appendChild(document.createTextNode(msg));
+	tr.appendChild(td);
+	return tr;
+}
+
+document.addEventListener("DOMContentLoaded", (event) => { 
+	loadAppointments();
+});
+
 /*
   Import getAllAppointments to fetch appointments from the backend
   Import createPatientRow to generate a table row for each patient appointment

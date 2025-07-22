@@ -1,3 +1,35 @@
+import { openModal } from "../components/modal.js";
+import { getDoctors , filterDoctors , saveDoctor } from "../services/doctorServices.js";
+import { createDoctorCard } from "../components/doctorCard.js";
+
+document.getElementById('addDocBtn').addEventListener('click', () => {
+	openModal('addDoctor');
+});
+
+async function filterDoctorsOnChange() {
+	
+}
+
+async function loadDoctorCards() {
+	const doctors = await getDoctors();
+	renderDoctorCards( doctors );
+}
+
+function renderDoctorCards(doctors)  {
+	const contentDiv = document.getElementById("content");
+	contentDiv.innerHTML = ""; 
+	for(const doctor of doctors ) {
+		const card = createDoctorCard(doctor);
+		contentDiv.appendChild(card);
+	}
+}
+
+document.getElementById("searchBar").addEventListener("input", filterDoctorsOnChange);
+document.getElementById("filterTime").addEventListener("change", filterDoctorsOnChange);
+document.getElementById("filterSpecialty").addEventListener("change", filterDoctorsOnChange);
+
+window.onload = loadDoctorCards;
+
 /*
   This script handles the admin dashboard functionality for managing doctors:
   - Loads all doctor cards

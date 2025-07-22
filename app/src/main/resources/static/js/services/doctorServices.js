@@ -1,3 +1,70 @@
+import { API_BASE_URL } from "../config/config.js";
+const DOCTOR_API = API_BASE_URL + '/doctor'
+
+async function getDoctors() {
+	try {
+		const response = await fetch(DOCTOR_API);
+		const json = await response.json();
+		return json;
+	} catch(e) {
+		console.error(e);
+	}
+	return [];
+}
+
+async function deleteDoctor(id, token) {
+	try {
+		const response = await fetch(DOCTOR_API + "/" + token + "/" + id,{
+			"method": "DELETE",
+		});
+		const json = await response.json();
+		return { "success": true , "message" : "Doctor successfully deleted!" };
+	} catch(e) {
+		console.error(e);
+		return { "success": false , "message" : "Doctor deletion failed!", error: e };
+	}
+}
+
+async function saveDoctor(doctor, token) {
+	try {
+		const response = await fetch(DOCTOR_API + "/" + token,{
+			"method": "POST",
+			"body": JSON.stringify( doctor )
+		});
+		const json = await response.json();
+		return { "success": true , "message" : "Doctor successfully created!", "doctor": json };
+	} catch(e) {
+		console.error(e);
+		return { "success": false , "message" : "Doctor creation failed!", error: e };
+	}
+}
+
+
+async function filterDoctors(name ,time ,specialty) {
+	let url = DOCTOR_API + "/" + token;
+	let params = [];
+	if( name && name.trim() != "" ) {
+		params.push("name=" + encodeURIComponent(name) );		
+	}
+	if( time && time.trim() != "" ) {
+		params.push("time=" + encodeURIComponent(time) );		
+	}
+	if( specialty && specialty.trim() != "" ) {
+		params.push("specialty=" + encodeURIComponent(specialty) );		
+	}
+	if( params.length > 0 ) {
+		url += "?" + params.join("&");
+	}
+	try {
+		const response = await fetch(url);
+		const json = await response.json();
+		return json;
+	} catch(e) {
+		console.error(e);
+		return [];
+	}
+}
+
 /*
   Import the base API URL from the config file
   Define a constant DOCTOR_API to hold the full endpoint for doctor-related actions

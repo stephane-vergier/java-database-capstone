@@ -1,3 +1,60 @@
+import { openModal } from "../components/modals.js";
+import { API_BASE_URL } from "../config/config.js";
+
+const ADMIN_API = API_BASE_URL + '/admin';
+const DOCTOR_API = API_BASE_URL + '/doctor/login'
+
+window.onload = function () {
+   const adminBtn = document.getElementById('adminLogin');
+	if (adminBtn) {
+		adminBtn.addEventListener('click', () => {
+		   openModal('adminLogin');
+		});
+	}
+};
+
+async function adminLoginHandler() {
+	const admin = { username, password };
+	try {
+		const response = await  fetch(ADMIN_API, {
+		  method: 'POST',
+		  headers: { 'Content-Type': 'application/json' },
+		  body: JSON.stringify(admin)
+		});
+		if( response && response.ok ) {
+			const json = await response.json();
+			localStorage.setItem("token", json);
+			selectRole("admin");
+		}
+	} catch(e) {
+		console.error(e);
+		localStorage.removeItem("token");
+		localStorage.removeItem("userRole");
+		window.alert("Invalid credentials!");
+	}
+}
+
+async function doctorLoginHandler() {
+	const doc = { username, password };
+	try {
+		const response = await  fetch(DOCTOR_API, {
+		  method: 'POST',
+		  headers: { 'Content-Type': 'application/json' },
+		  body: JSON.stringify(doc)
+		});
+		if( response && response.ok ) {
+			const json = await response.json();
+			localStorage.setItem("token", json);
+			selectRole("doctor");
+		}
+	} catch(e) {
+		console.error(e);
+		localStorage.removeItem("token");
+		localStorage.removeItem("userRole");
+		window.alert("Invalid credentials!");
+	}
+}
+
 /*
   Import the openModal function to handle showing login popups/modals
   Import the base API URL from the config file

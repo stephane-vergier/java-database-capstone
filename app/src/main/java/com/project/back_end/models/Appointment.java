@@ -59,6 +59,7 @@ public class Appointment {
 
 	@Future(message = "Appointment time must be in the future")
 	@Column
+	@NotNull
 	private LocalDateTime appointmentTime;
 	
 // 5. 'status' field:

@@ -1,15 +1,24 @@
 package com.project.back_end.controllers;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.back_end.models.Prescription;
 import com.project.back_end.services.AppointmentService;
 import com.project.back_end.services.PrescriptionService;
 import com.project.back_end.services.Service;
 
 @RestController
-@RequestMapping("/prescription")
+@RequestMapping("${api.path}" + "prescription")
 public class PrescriptionController {
     
 // 1. Set Up the Controller Class:
@@ -35,7 +44,19 @@ public class PrescriptionController {
 //    - Validates the token for the `"doctor"` role.
 //    - If the token is valid, updates the status of the corresponding appointment to reflect that a prescription has been added.
 //    - Delegates the saving logic to `PrescriptionService` and returns a response indicating success or failure.
-
+	@PostMapping("/{token}")
+	public ResponseEntity<String> savePrescription(@RequestBody Prescription presription,
+		@PathVariable String token) {
+		if( service.validateToken(token, "doctor")) {
+			try {
+				prescriptionService.savePrescription(presription);
+				return ResponseEntity.status(HttpStatus.CREATED).body("Prescription created");
+			} catch(Exception e) {
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Can not save!");
+			}
+		}
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Not Authorized!");
+	}
 
 // 4. Define the `getPrescription` Method:
 //    - Handles HTTP GET requests to retrieve a prescription by its associated appointment ID.
@@ -43,6 +64,22 @@ public class PrescriptionController {
 //    - Validates the token for the `"doctor"` role using the shared service.
 //    - If the token is valid, fetches the prescription using the `PrescriptionService`.
 //    - Returns the prescription details or an appropriate error message if validation fails.
+	@GetMapping("/{appointmentId}/{token}")
+	public ResponseEntity<Map<String, Object>> getPrescription(@PathVariable Long appointmentId,
+		@PathVariable String token) {
+		if( service.validateToken(token, "doctor")) {
+			try {
+				ResponseEntity<Map<String, Object>> res = prescriptionService.getPrescription(appointmentId);
+				if( "true".equals(res.getBody().get("success"))) {
+					return res;
+				}
+				return ResponseEntity.status(HttpStatus.CREATED).body( Map.of("success","false","message","No prescriptions found"));
+			} catch(Exception e) {
+				return ResponseEntity.status(HttpStatus.CREATED).body( Map.of("success","false","message","internal error"));
+			}
+		}
+		return ResponseEntity.status(HttpStatus.CREATED).body( Map.of("success","false","message","Not Authorized"));
+	}
 
 
 }
